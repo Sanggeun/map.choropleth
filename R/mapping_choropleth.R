@@ -65,8 +65,7 @@ plot_map <- function(map , re_var, index_type,
   }
 
   return (
-    ggplot(map) +
-      aes(long, lat, group = group, fill = re_var) +
+    ggplot(map, aes(long, lat, group = group, fill = re_var)) +
       geom_polygon() +
       geom_path(color = path_color) +
       coord_equal() +
