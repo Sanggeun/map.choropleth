@@ -16,7 +16,6 @@
 
 data_to_map <- function(map, data, map_merge_key = "adm_dr_nm", map_key = "adm_dr_cd", data_key = "dong"){
   map@data$id <- rownames(map@data)
-  map$id <- iconv(map$id, "euc-kr", "UTF-8")
   map_f <- fortify(map, region = "id")
 
   merge_data <- merge(map@data[, c(map_key, map_merge_key)], data, by.x=map_merge_key, by.y = data_key)
