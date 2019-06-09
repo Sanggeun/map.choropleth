@@ -16,7 +16,6 @@
 name_in_map <- function(map, name_var, name = NULL) {
 
   map@data$id <- rownames(map@data)
-  map$id <- iconv(map$id, "euc-kr", "UTF-8")
   map_f <- fortify(map, region = "id")
   # 중심좌표를 계산
   distcenters <- ddply(map_f, .(id), summarize, clat = mean(lat), clong = mean(long))
@@ -30,5 +29,6 @@ name_in_map <- function(map, name_var, name = NULL) {
 
   names(naming) <- map@data[["id"]]
   distcenters$name <- naming[distcenters$id]
+  distcenters$name <- iconv(distcenters$name, "euc-kr", "UTF-8")
   return(distcenters)
 }
