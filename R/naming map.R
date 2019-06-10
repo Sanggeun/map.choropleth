@@ -29,6 +29,5 @@ name_in_map <- function(map, name_var, name = NULL) {
 
   names(naming) <- map@data[["id"]]
   distcenters$name <- naming[distcenters$id]
-  distcenters$name <- iconv(distcenters$name, "euc-kr", "UTF-8")
   return(distcenters)
 }
